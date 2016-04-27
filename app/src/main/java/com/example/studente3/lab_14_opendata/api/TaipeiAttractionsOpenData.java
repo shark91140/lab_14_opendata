@@ -1,0 +1,23 @@
+package com.example.studente3.lab_14_opendata.api;
+
+import com.example.studente3.lab_14_opendata.beans.TaipeiAttractionsBean;
+
+import retrofit2.Call;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.GET;
+
+/**
+ * Created by student on 2016/4/25.
+ */
+public interface TaipeiAttractionsOpenData {
+    @GET("/opendata/datalist/apiAccess?scope=resourceAquire&rid=36847f3f-deff-4183-a5bb-800737591de5")
+    Call<TaipeiAttractionsBean> getTaipeiAttractionsBean();
+
+    Retrofit retrofit = new Retrofit.Builder()
+            .baseUrl("http://data.taipei/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build();
+    TaipeiAttractionsOpenData apiService = retrofit.create(TaipeiAttractionsOpenData.class);
+
+}
